@@ -4,6 +4,9 @@ import connectDB from './config/db.js';
 
 import bodyparser from 'body-parser'
 
+import productRoutes from './routes/productRoutes.js';
+import userRoutes from './routes/userRoutes.js'
+import orderRoutes from './routes/orderRoutes.js'
 
 import cors from 'cors'
 
@@ -25,6 +28,9 @@ app.use(express.urlencoded({ extended: true }))
 
 app.use(express.json())
 
+app.use('/api/products', productRoutes);
+app.use('/api/user', userRoutes)
+app.use('/api/orders', orderRoutes)
 
 const PORT = process.env.PORT || 2000;
 
