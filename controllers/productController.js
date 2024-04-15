@@ -27,10 +27,10 @@ export const getProductByCategory = asyncHandler(async(req, res) => {
     const limit = req.query.Limit
     let product;
     if(limit){
-         product = await Product.find({category : req.params.category}).limit(6).sort({price: req.query.sort})
+         product = await Product.find({category : req.params.category}).limit(6).sort({price: req.query.sort || -1})
     }
     else {
-        product = await Product.find({category : req.params.category}).sort({price: req.query.sort})
+        product = await Product.find({category : req.params.category}).sort({price: req.query.sort || -1})
     }
     
     if(product){
