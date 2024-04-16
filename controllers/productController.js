@@ -26,11 +26,12 @@ export const getProductById = asyncHandler(async(req, res) => {
 export const getProductByCategory = asyncHandler(async(req, res) => {
     const limit = req.query.Limit
     let product;
+    const sortValue = req.query.sort ? parseInt(req.query.sort) : -1;
     if(limit){
-         product = await Product.find({category : req.params.category}).limit(6).sort({price: req.query.sort || -1})
+         product = await Product.find({category : req.params.category}).limit(6).sort({price: sortValue || -1})
     }
     else {
-        product = await Product.find({category : req.params.category}).sort({price: req.query.sort || -1})
+        product = await Product.find({category : req.params.category}).sort({price: sortValue || -1})
     }
     
     if(product){
